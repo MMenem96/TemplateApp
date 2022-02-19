@@ -1,0 +1,130 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+    id 'kotlin-parcelize'
+    id 'dagger.hilt.android.plugin'
+}
+android {
+    compileSdk 31
+
+    defaultConfig {
+        applicationId "com.mywork.templateapp"
+        minSdk 22
+        targetSdk 31
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+
+    //Enable view-binding
+    buildFeatures {
+        viewBinding true
+    }
+}
+
+dependencies {
+    def lifecycle_version = "2.4.1"
+    def retrofit2_version = "2.9.0"
+    def logging_interceptor_version = "4.9.1"
+    def coroutines_version = "1.5.2"
+    def nav_version = "2.4.1"
+    def glide_version = "4.12.0"
+    def room_version = "2.4.1"
+    def material_dialogs_version = "3.3.0"
+    def hilt_lifecycle_version = "1.0.0-alpha03"
+    def splash_screen_version = "1.0.0-beta01"
+
+    //Kotlin Core
+    implementation 'androidx.core:core-ktx:1.7.0'
+
+    //App Compact
+    implementation 'androidx.appcompat:appcompat:1.4.1'
+
+    //Material Design
+    implementation 'com.google.android.material:material:1.5.0'
+
+    //Constrains layout
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.3'
+
+    //Splash Screen
+    implementation "androidx.core:core-splashscreen:$splash_screen_version"
+
+    //Hilt dependency injection
+    implementation "com.google.dagger:hilt-android:$hilt_version"
+    kapt "com.google.dagger:hilt-android-compiler:$hilt_version"
+
+    //Hilt View Model life cycle
+    implementation "androidx.hilt:hilt-lifecycle-viewmodel:$hilt_lifecycle_version"
+    kapt "androidx.hilt:hilt-compiler:$hilt_lifecycle_version"
+
+    // ViewModel
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
+    // LiveData
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
+    // Saved state module for ViewModel
+    implementation "androidx.lifecycle:lifecycle-viewmodel-savedstate:$lifecycle_version"
+    // Annotation processor
+    implementation "androidx.lifecycle:lifecycle-common-java8:$lifecycle_version"
+
+    //Activity KTX for view models
+//    implementation "androidx.activity:activity-ktx:1.4.0"
+
+
+    //Retrofit & GSON converter
+    implementation "com.squareup.retrofit2:retrofit:$retrofit2_version"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit2_version"
+
+    //Logging interceptors
+    implementation "com.squareup.okhttp3:logging-interceptor:$logging_interceptor_version"
+
+
+    //Coroutines
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines_version"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_version"
+
+    // LiveData Coroutines
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
+
+
+    //Jetpack navigation components
+    implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
+    implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
+    implementation "androidx.navigation:navigation-runtime:$nav_version"
+
+    //Room
+    implementation("androidx.room:room-ktx:$room_version")
+    implementation("androidx.room:room-runtime:$room_version")
+    kapt("androidx.room:room-compiler:$room_version")
+
+    //Glide
+    implementation "com.github.bumptech.glide:glide:$glide_version"
+    kapt "com.github.bumptech.glide:compiler:$glide_version"
+
+    //Material dialogs
+    implementation "com.afollestad.material-dialogs:core:$material_dialogs_version"
+    implementation "com.afollestad.material-dialogs:datetime:$material_dialogs_version"
+
+
+    //Testing
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+
+
+}
